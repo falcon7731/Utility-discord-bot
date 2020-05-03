@@ -3,8 +3,8 @@ from discord.ext import commands
 from requests import get
 
 
-token = ''
 client = commands.Bot(command_prefix = ".")
+
 
 @client.event
 async def on_ready():
@@ -18,6 +18,7 @@ async def on_message(message):
         if str(message.content).lower() == 'get ip':
             ip = get('https://api.ipify.org').text
             await message.channel.send(ip)
+            print(ip + ' , ' + 'IP was requested by ' + str(message.author))
             
             
 if __name__ == "__main__":
